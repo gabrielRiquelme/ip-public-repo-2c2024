@@ -140,3 +140,14 @@ table.table td i {
     margin-top: 6px;
     font-size: 95%;
 }
+.card-status-success {
+    border: 2px solid green;
+}
+
+.card-status-danger {
+    border: 2px solid red;
+}
+
+.card-status-warning {
+    border: 2px solid orange;
+}
