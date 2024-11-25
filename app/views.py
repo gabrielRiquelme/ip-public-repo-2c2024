@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from .layers.services import services
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-
+from django.core.paginator import Paginator
 def index_page(request):
     return render(request, 'index.html')
 
@@ -12,11 +12,16 @@ def index_page(request):
 # si el opcional de favoritos no está desarrollado, devuelve un listado vacío.
 def home(request):
     images = [] 
-    images = services.getAllImages() # LISTA CON LAS CARD YA CARGADAS 
+    images = services.getAllImages() # -- LISTA CON LAS CARD YA CARGADAS 
+    paginas = Paginator(images,6) # -- PAGINAR ARTICULOS 6 por pag.
+
+    #-- Seteo numero de paginas.
+    page = request.GET.get('page')
+    page_cards = paginas.get_page(page)
 
     favourite_list = []
 
-    return render(request, 'home.html', { 'images': images, 'favourite_list': favourite_list })
+    return render(request, 'home.html', { 'images': page_cards, 'favourite_list': favourite_list })
 
 def search(request):
     search_msg = request.POST.get('query', '')
