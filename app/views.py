@@ -5,6 +5,10 @@ from .layers.services import services
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.core.paginator import Paginator
+from django.contrib.auth.forms import UserCreationForm
+
+
+
 def index_page(request):
     return render(request, 'index.html')
 
@@ -32,6 +36,23 @@ def search(request):
         pass
     else:
         return redirect('home')
+    
+
+def register_pag(request):
+    register_form = UserCreationForm()
+
+    if request.method == 'POST':
+        register_form = UserCreationForm(request.POST)
+
+        if register_form.is_valid():
+            register_form.save()
+            return redirect('index-page')
+
+    return render(request,'registration/registro.html',{
+        'Titulo':'Registro',
+        'register_form':register_form
+    })
+
 
 
 # Estas funciones se usan cuando el usuario está logueado en la aplicación.

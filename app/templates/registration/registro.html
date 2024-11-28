@@ -1,0 +1,16 @@
+{% extends 'header.html' %}
+
+{% block content %}
+
+<h1>{{title}}</h1>
+<form method="post" action="">
+    {%csrf_token%}
+
+    {{register_form.as_p}}
+
+    <button type="submit">Registrar</button>
+</form>
+
+
+{% endblock %}
+{% include "footer.html" %}
