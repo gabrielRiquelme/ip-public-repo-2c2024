@@ -3,10 +3,14 @@
 from django.shortcuts import redirect, render
 from .layers.services import services
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate
+from django.contrib.auth import login
 from django.contrib.auth import logout
 from django.core.paginator import Paginator
 from django.contrib.auth.forms import UserCreationForm
-
+from app.forms import RegisterForm
+from django.contrib import messages
+#from django.contrib.auth.hashers import make_random_password
 
 
 def index_page(request):
@@ -39,20 +43,48 @@ def search(request):
     
 
 def register_pag(request):
-    register_form = UserCreationForm()
+    register_form = RegisterForm()
 
     if request.method == 'POST':
-        register_form = UserCreationForm(request.POST)
+        register_form = RegisterForm(request.POST)
 
         if register_form.is_valid():
             register_form.save()
-            return redirect('index-page')
+            messages.success(request,'Tu Usuario fue creado correctamente, se envio tu credencial de acceso a tu email.')
+            
+            return redirect('login')
 
     return render(request,'registration/registro.html',{
-        'Titulo':'Registro',
+        'Titulo':'Registrate aqui',
         'register_form':register_form
     })
 
+def login_pag(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request,username=username,password=password)
+
+        if user is not None:
+            login(request,user)
+            return redirect('home')
+        else:
+            messages.error(request, 'Usuario o contraseña incorrectos.')
+            return render(request, 'login.html')
+
+
+
+    return render(request,'registration/login.html',{
+        'title':'Inicia sesion'
+    })
+
+
+def logout_user(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('login')
 
 
 # Estas funciones se usan cuando el usuario está logueado en la aplicación.

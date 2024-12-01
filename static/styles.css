@@ -182,3 +182,47 @@ table.table td i {
     color: #fff;
     border-color: #007bff;
 }
+
+/* Form Registro */
+
+.container{
+    padding: 5px;
+    background-color: white;
+    border-radius: 5%;
+    width: 600px;
+    height: 700px;
+    color: #333;
+}
+
+.form-control {
+    border-radius: 5px; 
+    box-shadow: none; 
+  }
+  
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+.message,.alert-succes{
+    padding: 20px;
+    background-color: #1f7e58;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.message,.alert-warning{
+    padding: 20px;
+    background-color: yellow;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.alert-danger {
+    background-color: #ff9966; /* Cambia el color de fondo */
+    border-color: #ff6633; /* Cambia el color del borde */
+    border-radius: 10px; /* Añade bordes redondeados */
+    padding: 15px;
+}
+

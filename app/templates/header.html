@@ -11,9 +11,10 @@
 </head>
 
 <body>
+    {% csrf_token %}
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Proyecto TP</a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,11 +33,13 @@
                     {% endif %}
                     <li class="nav-item">
                         {% if request.user.is_authenticated %}
-                        <a class="nav-link" href="{% url 'exit' %}">Salir</a> {% else %}
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit">Salir</button>
+                        </form>
                         <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a> {% endif %}
                     </li>
                 </ul>
-
 
             </div>
         </div>
