@@ -85,7 +85,9 @@ def logout_user(request):
     if request.method == 'POST':
         logout(request)
         return redirect('login')
-
+    else:
+        # Maneja el caso de una solicitud GET (opcional)
+        return redirect('login')  # O render una página de confirmación
 
 # Estas funciones se usan cuando el usuario está logueado en la aplicación.
 @login_required
