@@ -190,9 +190,10 @@ table.table td i {
     background-color: white;
     border-radius: 5%;
     width: 600px;
-    height: 700px;
+    height: 750px;
     color: #333;
 }
+
 
 .form-control {
     border-radius: 5px; 
@@ -220,9 +221,9 @@ table.table td i {
 }
 
 .alert-danger {
-    background-color: #ff9966; /* Cambia el color de fondo */
-    border-color: #ff6633; /* Cambia el color del borde */
-    border-radius: 10px; /* Añade bordes redondeados */
+    background-color: #ff9966; 
+    border-color: #ff6633; 
+    border-radius: 10px; 
     padding: 15px;
 }
 
@@ -259,4 +260,22 @@ table.table td i {
   --bs-btn-border-color: #fff; /* Color del borde del botón */
   --bs-btn-hover-bg: #0d6efd; /* Color de fondo al pasar el cursor */
   --bs-btn-hover-border-color: #0d6efd; /* Color del borde al pasar el cursor */
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+p {
+    text-align: justify;
+    line-height: 1.5;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #007bff;
+}
+.container-index{
+    padding: 50px;
 }

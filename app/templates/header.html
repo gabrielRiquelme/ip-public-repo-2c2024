@@ -26,15 +26,29 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Galería</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'favoritos' %}">Favoritos</a>
-              </li>
+              {% if user.email %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'favoritos' %}">Favoritos</a>
+                </li>
+              {% endif %}
             </ul>
-            <form class="d-flex">
-              <button class="btn btn-light" type="submit">Cerrar Sesión</button>
-              <button class="btn btn-light" type="submit">Iniciar Sesion</button>
-              <button class="btn btn-light" type="submit">Registrate</button>
+            <form method='post'action="{% url 'logout' %} "class="d-flex">
+              {% csrf_token %}
+              {% if user.email %}
+                <button class="btn btn-light" type="submit">Cerrar Sesión</button>
+              {% endif %}
             </form>
+          {% if user.email == false%}
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <button class="btn btn-light" type="submit">Iniciar Sesión</button>
+            </form>
+            
+            <form method="post" action="{% url 'register' %}">
+                {% csrf_token %}
+                <button class="btn btn-light" type="submit">Registrarse</button>
+            </form>
+          {% endif %}
           </div>
         </div>
       </nav>
@@ -47,5 +61,4 @@
 
 {% block content %}
 {% endblock %}
-
 {% include "footer.html" %}

@@ -128,6 +128,6 @@ LOGOUT_REDIRECT_URL = 'index-page'
 
 EMAIL_HOST = 'smtp.gmail.com'  # Reemplaza con el host de tu proveedor de correo
 EMAIL_PORT = 587  # Puerto común para SMTP con TLS
-EMAIL_HOST_USER = 'gabrielcabj986@gmail.com'
-EMAIL_HOST_PASSWORD = 'tphe rona lvad slgg'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ' '
 EMAIL_USE_TLS = True

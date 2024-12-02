@@ -1,12 +1,52 @@
-{% extends 'header.html' %} 
-{% block content %} 
+{% extends 'header.html' %}
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
 
-{% if request.user.is_authenticated %}
-<h2 class="text-center">Bienvenido {{ request.user.first_name}} {{request.user.last_name}}!</h2>
-{% else %}
-<h2 class="text-center">Bienvenido!</h2>
-{% endif %}
-<p class="text-center">
-    Mirá las imágenes desde <a href="{% url 'home' %}">este link.</a>
-</p>
+<div class="container"> <div class="row">
+    <div class="col-md-12 text-center">
+      {% if request.user.is_authenticated %}
+        <h2 class="display-4">Bienvenido, {{ request.user.get_full_name }}!</h2>
+      {% else %}
+        <h2 class="display-4">¡Bienvenido!</h2>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <p class="lead">
+        Esta aplicación, desarrollada por estudiantes de la Universidad Nacional General Sarmiento, te permite explorar el universo de Rick & Morty. Descubre imágenes, nombres, estados y más de tus personajes favoritos.
+      </p>
+
+      <h3>¿Cómo funciona?</h3>
+      <p>
+        Utilizamos la API de Rick & Morty para obtener datos en formato JSON. Estos datos se procesan y se muestran en tarjetas informativas, como las que encontrarás en la galería.
+      </p>
+
+      <p>
+        <strong>Características clave:</strong>
+        <ul>
+          <li>Interfaz de usuario intuitiva.</li>
+          <li>Datos actualizados constantemente.</li>
+          <li>Registro de usuario para una experiencia personalizada.</li>
+        </ul>
+      </p>
+    </div>
+  </div>
+
+  <hr>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <p>
+        ¡Explora la galería!
+        <a href="{% url 'home' %}" class="btn btn-primary">Ver imágenes</a>
+      </p>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
+{% include "footer.html" %}

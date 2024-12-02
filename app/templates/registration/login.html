@@ -2,11 +2,11 @@
 
 {% block content %}
 
-
 <div class="mx-auto text-center">
-<h3 >Bienvenido al Login de la app.</h3>
-</div>
+    <h3 >Bienvenido al Login de la app.</h3>
+    </div>
 
+<div class="container-login">
 <div class="login-form" style="text-align: center;">
     <form action="" method="POST" style="display: inline-block;">
         {% csrf_token %}
@@ -21,6 +21,8 @@
             <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
         </div>
     </form>
-
+</div>
 </div>
 {% endblock %}
+
+{% include "footer.html" %}

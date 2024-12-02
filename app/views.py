@@ -1,5 +1,4 @@
 # capa de vista/presentación
-
 from django.shortcuts import redirect, render
 from .layers.services import services
 from django.contrib.auth.decorators import login_required
@@ -10,7 +9,9 @@ from django.core.paginator import Paginator
 from django.contrib.auth.forms import UserCreationForm
 from app.forms import RegisterForm
 from django.contrib import messages
+
 #from django.contrib.auth.hashers import make_random_password
+
 
 
 def index_page(request):
@@ -88,6 +89,7 @@ def logout_user(request):
     else:
         # Maneja el caso de una solicitud GET (opcional)
         return redirect('login')  # O render una página de confirmación
+
 
 # Estas funciones se usan cuando el usuario está logueado en la aplicación.
 @login_required
